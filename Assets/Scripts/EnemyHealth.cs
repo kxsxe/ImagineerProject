@@ -6,10 +6,16 @@ public class EnemyHealth : MonoBehaviour
     public int maxHealth = 3;
 
     private int currentHealth;
+    private RoomManager roomManager;
 
     void Start()
     {
         currentHealth = maxHealth;
+    }
+
+    public void SetRoomManager(RoomManager manager)
+    {
+        roomManager = manager;
     }
 
     public void TakeDamage(int damage)
@@ -26,7 +32,11 @@ public class EnemyHealth : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("Enemy 사망");
+        if (roomManager != null)
+        {
+            roomManager.OnEnemyDead();
+        }
+
         Destroy(gameObject);
     }
 }
