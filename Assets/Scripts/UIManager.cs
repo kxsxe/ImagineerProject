@@ -6,6 +6,9 @@ public class UIManager : MonoBehaviour
     [Header("체력 텍스트")]
     public TextMeshProUGUI hpText;
 
+    [Header("코인 텍스트")]
+    public TextMeshProUGUI coinText;
+
     [Header("게임오버 텍스트")]
     public GameObject gameOverText;
 
@@ -18,6 +21,17 @@ public class UIManager : MonoBehaviour
         }
 
         hpText.text = "HP: " + currentHP + " / " + maxHP;
+    }
+
+    public void UpdateCoin(int coin)
+    {
+        if (coinText == null)
+        {
+            Debug.LogError("CoinText 연결 안 됨");
+            return;
+        }
+
+        coinText.text = "Coin: " + coin;
     }
 
     public void ShowGameOver()
